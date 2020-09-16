@@ -4,7 +4,7 @@ const Article = require('../models/article-schema')
 
 
 router.put('/:id', function(req, res, next) {
-    Article.update({_id: req.params.id}, function (err, data){ 
+    Article.update({_id: req.params.id}, req.body, function (err, data){ 
         if (err){
             return res.json({err: 414, message: 'Article PUT HTTP Fail'})
         }

@@ -10,10 +10,12 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 let articleRouter = require('./routes/article-route');
 let userprofileRouter = require('./routes/userprofile-route');
+let skillsRouter = require('./routes/skillsRouter');
+let studentRoute = require('./routes/studentRoute');
 
 //THIS IS WHERE YOU ARE CREATING A MONGOOSE CONNECTION STRING
 const connection_string = config.database.buildConnectionString();
-mongoose.connect(connection_string)
+mongoose.connect(connection_string, { useNewUrlParser: true, useUnifiedTopology : true })
   .then(()=>{
     console.log('Database connection succesful.');
   })
@@ -43,6 +45,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/userprofile', userprofileRouter);
 app.use('/article', articleRouter);
+app.use('/skills', skillsRouter);
+app.use('/students', studentRoute);
 
 
 // catch 404 and forward to error handler
