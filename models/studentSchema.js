@@ -5,14 +5,6 @@ let studentSchema = new Schema({
   name: {
     type: String,
     required: true
-  },
-  email: {
-    type: String,
-    required: true
-  },
-  rollno: {
-    type: Number,
-    required: true
   }
 });
 
